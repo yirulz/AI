@@ -7,7 +7,7 @@ namespace GoneHome
 {
   
 
-    public class Enemy : MonoBehaviour
+    public class FollowEnemy : MonoBehaviour
     {
         private NavMeshAgent agent;
 
