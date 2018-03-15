@@ -13,9 +13,13 @@ namespace GoneHome
 
         public Transform target;
 
+        private Vector3 spawnPoint;
+
         // Use this for initialization
         void Start()
         {
+            spawnPoint = transform.position;
+
             agent = GetComponent<NavMeshAgent>();
         }
 
@@ -23,6 +27,12 @@ namespace GoneHome
         void Update()
         {
             agent.SetDestination(target.position);
+        }
+
+        public void Reset()
+        {
+            transform.position = spawnPoint;
+
         }
     }
 }

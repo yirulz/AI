@@ -11,9 +11,14 @@ public class PatrolEnemy : MonoBehaviour
     private Transform[] waypoints;
     private int currentIndex = 0;
 
+    private Vector3 spawnPoint;
+
     // Use this for initialization
     void Start()
     {
+        // Make a copy of the starting position
+        spawnPoint = transform.position;
+
         int length = waypointGroup.childCount;
         waypoints = new Transform[length];
 
@@ -51,5 +56,11 @@ public class PatrolEnemy : MonoBehaviour
             //Loop back to the start
             currentIndex = 0;
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = spawnPoint; // Resets position
+        currentIndex = 0; // Resets way point following
     }
 }
