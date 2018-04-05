@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 29/03/2018 10:20:40 AM-->
+<!--Last exported: 5/04/2018 10:37:35 AM-->
 <Tiled2Unity version="1.0.13.2">
   <AssignMaterial mesh="Level_02_mesh_0001" material="tileset" />
   <AssignMaterial mesh="Level_02_mesh_0002" material="tileset" />
@@ -44,6 +44,12 @@
         <PolygonCollider2D>
           <Path>0,0 5.28,0 5.28,-2.24 0,-2.24 0,0</Path>
         </PolygonCollider2D>
+      </GameObject>
+      <GameObject name="PolylineObject" x="3.33" y="-13.73" rotation="0" layer="">
+        <PolylineObjectComponent tmx-object-id="15" tmx-object-name="" tmx-object-type="" tmx-object-x="333" tmx-object-y="1373" tmx-object-width="0" tmx-object-height="0" tmx-object-rotation="0" />
+        <EdgeCollider2D>
+          <Points>0.03,-0.03 -1.57,1.57 -3.17,-0.03 0.03,-0.03</Points>
+        </EdgeCollider2D>
       </GameObject>
       <GameObject name="PolygonObject" x="7.35999966" y="-13.7599993" rotation="0" layer="">
         <PolygonObjectComponent tmx-object-id="5" tmx-object-name="" tmx-object-type="" tmx-object-x="736" tmx-object-y="1376" tmx-object-width="0" tmx-object-height="0" tmx-object-rotation="0" />
