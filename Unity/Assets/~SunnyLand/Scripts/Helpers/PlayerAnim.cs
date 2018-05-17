@@ -16,9 +16,9 @@ namespace SunnyLand
         {
             player = GetComponent<PlayerController>();
             //subscrube anim's functions to player events
-            player.onJump += OnJump;
-            player.onMove += OnMove;
-            player.onClimb += OnClimb;
+            //player.onJump += OnJump;
+            //player.onMove += OnMove;
+            //player.onClimb += OnClimb;
 
         }
 

@@ -2,65 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolEnemy : MonoBehaviour
+namespace GoneHome
 {
-    public Transform waypointGroup;
-    public float movementSpeed = 5f;
-    public float closeness = 1f; // how close before switching to new target
-
-    private Transform[] waypoints;
-    private int currentIndex = 0;
-
-    private Vector3 spawnPoint;
-
-    // Use this for initialization
-    void Start()
+    public class PatrolEnemy : MonoBehaviour
     {
-        // Make a copy of the starting position
-        spawnPoint = transform.position;
+        public Transform waypointGroup;
+        public float movementSpeed = 5f;
+        public float closeness = 1f;
 
-        int length = waypointGroup.childCount;
-        waypoints = new Transform[length];
+        private Transform[] waypoints;
+        private int currentIndex = 0;
 
-        for (int i = 0; i < length; i++)
+        // Use this for initialization
+        void Start()
         {
-            waypoints[i] = waypointGroup.GetChild(i);
+            int length = waypointGroup.childCount;
+            waypoints = new Transform[length];
+
+        //  for (initialization; condition ; iteration)
+            for (int i = 0; i < length; i++)
+            {
+                // statements
+                waypoints[i] = waypointGroup.GetChild(i); 
+            }
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Get current waypoint
-        Transform current = waypoints[currentIndex];
-        //Move enemy in direction of waypoint
-        Vector3 position = transform.position;
-        Vector3 direction = current.position - position;
-        position += direction.normalized * movementSpeed * Time.deltaTime;
-        //normalized shrinks the vector 3 down so you can move at consistant speed
-        transform.position = position;
-
-        //Check closeness of anemy to current waypoint
-        float distance = Vector3.Distance(position, current.position);
-        //Is the enemy close to the current waypoint?
-        if(distance <= closeness)
+        // Update is called once per frame
+        void Update()
         {
-            // Switch to next waypoint
-            currentIndex++;
-        }
-        // Is currentIndex greater than or equal to length?
+            // Get current waypoint
+            Transform current = waypoints[currentIndex];
+            // Move enemy towards current waypoint
+            Vector3 position = transform.position; // my position
 
-        if(currentIndex >= waypoints.Length)
-        {
-            //Loop back to the start
-            currentIndex = 0;
-        }
-    }
+            Vector3 direction = current.position - position;
+            position += direction.normalized * movementSpeed * Time.deltaTime;
 
-    public void Reset()
-    {
-        transform.position = spawnPoint; // Resets position
-        currentIndex = 0; // Resets way point following
+            transform.position = position; // Applying the modified position to Enemy
+
+            // Check closeness of enemy to current waypoint
+            float distance = Vector3.Distance(current.position, position);
+            // Is the enemy close to current waypoint?
+            if (distance <= closeness)
+            {
+                // Move to next waypoint
+                currentIndex++;
+            }
+
+            // Check if index goes out of range
+            if (currentIndex >= waypoints.Length)
+            {
+                // Reset index to zero
+                currentIndex = 0;
+            }
+        }
     }
 }

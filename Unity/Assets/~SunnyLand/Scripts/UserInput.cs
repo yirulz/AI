@@ -4,15 +4,19 @@ using UnityEngine;
 
 namespace SunnyLand
 {
-
+    // Force Unity to attach "PlayerController"
     [RequireComponent(typeof(PlayerController))]
-
     public class UserInput : MonoBehaviour
     {
-        private PlayerController player;
-        private float inputH, inputV;
-        private bool isJumping = false, isCrouching = false;
+        public bool isJumping = false;
+        public bool isCrouching = false;
+        public float inputH, inputV;
 
+        // Reference to player controller
+        private PlayerController player;
+
+        #region Unity Functions
+        // Use this for initialization
         void Start()
         {
             player = GetComponent<PlayerController>();
@@ -20,32 +24,37 @@ namespace SunnyLand
         // Update is called once per frame
         void Update()
         {
+            // Update input
             GetInput();
+            // Control the Player with input
             player.Move(inputH);
-            if(isJumping)
+            player.Climb(inputV);
+            if (isJumping) // If jump input is made
             {
+                // Make the controller jump
                 player.Jump();
             }
-            if(isCrouching)
+            if(isCrouching) // If crouch input is made
             {
+                // Make the controller crouch
                 player.Crouch();
             }
-            else
+            else // If the input is released
             {
+                // Uncrouch the controller
                 player.UnCrouch();
             }
-
-
         }
+        #endregion
 
+        #region Custom Functions
         void GetInput()
         {
-            inputH = Input.GetAxis("Horizontal");
-            inputV = Input.GetAxis("Vertical");
-
+            inputH = Input.GetAxisRaw("Horizontal");
+            inputV = Input.GetAxisRaw("Vertical");
             isJumping = Input.GetKeyDown(KeyCode.Space);
-            isCrouching = Input.GetKeyDown(KeyCode.LeftControl);
+            isCrouching = Input.GetKey(KeyCode.LeftControl);
         }
+        #endregion
     }
-
 }
