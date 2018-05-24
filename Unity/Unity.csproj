@@ -149,6 +149,9 @@
     <Compile Include="Assets\~SunnyLand\Scripts\Helpers\PlayerAnim.cs" />
     <Compile Include="Assets\~SunnyLand\Scripts\PlayerController.cs" />
     <Compile Include="Assets\~SunnyLand\Scripts\UserInput.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Enemy\AIAgent.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\Enemy\Droid.cs" />
+    <Compile Include="Assets\~TowerDefense\Scripts\MouseOrbit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
