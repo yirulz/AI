@@ -4,11 +4,8 @@ using UnityEngine;
 
 namespace TowerDefense
 {
-
-
     public class MouseOrbit : MonoBehaviour
     {
-
         public Transform target;
         public float distance = 5f;
         public float xSpeed = 120f;
@@ -37,13 +34,13 @@ namespace TowerDefense
             y = angles.x;
         }
 
-        void Update()
+        void LateUpdate()
         {
             //If target has been set and left mouse button is down
             if(target && Input.GetMouseButton(1))
             {
                 x += Input.GetAxis("Mouse X") * xSpeed * distance * Time.deltaTime;
-                y += Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
+                y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
 
                 y = ClampAngle(y, yMinLimit, yMaxLimit);
 

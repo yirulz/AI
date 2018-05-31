@@ -3,30 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-[RequireComponent(typeof(NavMeshAgent))]
-
-
-public class AIAgent : MonoBehaviour
+namespace TowerDefense
 {
-    public Transform target;
-
-    private NavMeshAgent nav;
-
-    void Awake()
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class AIAgent : MonoBehaviour
     {
-        nav = GetComponent<NavMeshAgent>();
+        [System.NonSerialized]
+        public Transform target;
 
-    }
+        private NavMeshAgent nav;
 
-    void Update()
-    {
-       if(target != null)
+        void Awake()
         {
-            nav.SetDestination(target.position);
+            nav = GetComponent<NavMeshAgent>();
+
         }
+
+        void Update()
+        {
+            if (target != null)
+            {
+                nav.SetDestination(target.position);
+            }
+        }
+
+
+
     }
-
-
-
 }
