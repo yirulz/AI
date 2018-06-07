@@ -43,17 +43,18 @@ namespace TowerDefense
                 y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
 
                 y = ClampAngle(y, yMinLimit, yMaxLimit);
-
-                Quaternion rotation = Quaternion.Euler(y, x, 0);
-
-                float scroll = Input.GetAxis("Mouse ScrollWheel");
-                distance = Mathf.Clamp(distance - scroll * 5, distanceMin, distanceMax);
-
-                Vector3 position = rotation * new Vector3(0, 0, -distance) + target.position;
-
-                transform.position = position;
-                transform.rotation = rotation;
             }
+
+            Quaternion rotation = Quaternion.Euler(y, x, 0);
+            transform.rotation = rotation;
+
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            distance = Mathf.Clamp(distance - scroll * 5, distanceMin, distanceMax);
+
+            Vector3 position = rotation * new Vector3(0, 0, -distance) + target.position;
+
+            transform.position = position;
+
         }
     }
 }
