@@ -20,6 +20,13 @@ namespace TowerDefense
             health = maxHealth;
         }
 
+        void OnDestroy()
+        {
+            if(healthSlider)
+            {
+                Destroy(healthSlider.gameObject);
+            }
+        }
 
         void Update()
         {
@@ -51,11 +58,17 @@ namespace TowerDefense
 
         public void DealDamage(float damage)
         {
-            maxHealth -= damage;
-            
-
-            if(maxHealth <= 0)
+            health -= damage;
+            //Update slider
+            if(healthSlider)
             {
+                //Convert health to a 0-1 value (health/maxhealth)
+                healthSlider.value = health / maxHealth;
+            }
+            //if max health is 0
+            if(health <= 0)
+            {
+                //Destroy object
                 Destroy(gameObject);
             }
         }
